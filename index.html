@@ -1,0 +1,469 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Kế Hoạch Học Tập & Ghi Chép Tài Liệu - Phan Xuân Đào (12A7)</title>
+<style>
+:root {
+--bg-color: #fdf6f9;
+--card-bg: #ffffff;
+--primary: #d883a6;
+--primary-dark: #b55d82;
+--primary-light: #f4dbe6;
+--secondary: #89b4c4;
+--secondary-dark: #5c8a9c;
+--text-main: #4a4a4a;
+--text-muted: #7a7a7a;
+--border-color: #eedce4;
+}
+* {
+box-sizing: border-box;
+margin: 0;
+padding: 0;
+font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+body {
+background-color: var(--bg-color);
+color: var(--text-main);
+padding: 20px;
+line-height: 1.6;
+}
+.container {
+max-width: 1000px;
+margin: 0 auto;
+}
+header {
+background: linear-gradient(135deg, var(--primary-light), #e3f0f5);
+padding: 24px 30px;
+border-radius: 16px; box-shadow: 0 4px 15px rgba(216, 131, 166, 0.15);
+margin-bottom: 24px;
+display: flex;
+flex-wrap: wrap;
+justify-content: space-between;
+align-items: center;
+border: 1px solid var(--border-color);
+}
+.header-info h1 {
+font-size: 1.55rem;
+color: var(--primary-dark);
+margin-bottom: 4px;
+}
+.header-info p {
+font-size: 0.95rem;
+color: var(--text-muted);
+}
+.goal-badge {
+background-color: #ffffff;
+padding: 10px 18px;
+border-radius: 12px;
+border: 1px dashed var(--primary);
+text-align: right;
+font-size: 0.88rem;
+}
+.goal-badge strong {
+color: var(--primary-dark);
+display: block;
+font-size: 0.98rem;
+}
+.grid {
+display: grid;
+grid-template-columns: 1.15fr 0.85fr;
+gap: 20px;
+margin-bottom: 24px;
+}
+@media (max-width: 768px) { .grid {
+grid-template-columns: 1fr;
+}
+.goal-badge {
+text-align: left;
+margin-top: 12px;
+width: 100%;
+}
+}
+.card {
+background-color: var(--card-bg);
+border-radius: 14px;
+padding: 20px;
+box-shadow: 0 4px 12px rgba(0, 0, 0, 0.04);
+border: 1px solid var(--border-color);
+margin-bottom: 20px;
+}
+.grid .card {
+margin-bottom: 0;
+}
+.card h2 {
+font-size: 1.12rem;
+color: var(--secondary-dark);
+margin-bottom: 15px;
+padding-bottom: 8px;
+border-bottom: 2px solid #eef6f9;
+display: flex;
+align-items: center;
+justify-content: space-between;
+}
+.add-form {
+display: flex;
+gap: 8px;
+margin-bottom: 15px;
+flex-wrap: wrap;
+}
+.add-form input, .add-form select {
+padding: 9px 12px; border: 1px solid var(--border-color);
+border-radius: 8px;
+font-size: 0.9rem;
+outline: none;
+}
+.add-form input[type="text"] {
+flex: 1;
+min-width: 160px;
+}
+.add-form input:focus, .add-form select:focus {
+border-color: var(--primary);
+}
+.btn {
+background-color: var(--primary);
+color: white;
+border: none;
+padding: 9px 16px;
+border-radius: 8px;
+cursor: pointer;
+font-weight: 600;
+font-size: 0.9rem;
+transition: background 0.2s;
+}
+.btn:hover {
+background-color: #c26a8f;
+}
+.task-list {
+list-style: none;
+max-height: 310px;
+overflow-y: auto;
+}
+.task-item {
+display: flex;
+align-items: center;
+justify-content: space-between;
+padding: 10px 8px;
+border-bottom: 1px solid #f7eff3; }
+.task-item:hover {
+background-color: #fdf9fb;
+}
+.task-left {
+display: flex;
+align-items: center;
+gap: 10px;
+flex: 1;
+}
+.task-left input[type="checkbox"] {
+width: 17px;
+height: 17px;
+accent-color: var(--primary);
+cursor: pointer;
+}
+.task-text.done {
+text-decoration: line-through;
+color: #aaa;
+}
+.subject-tag {
+font-size: 0.74rem;
+padding: 2px 8px;
+border-radius: 12px;
+background-color: var(--primary-light);
+color: #a64d74;
+font-weight: 600;
+white-space: nowrap;
+}
+.delete-btn {
+background: none;
+border: none;
+color: #ccc;
+cursor: pointer;
+font-size: 1.15rem;
+margin-left: 8px;
+} .delete-btn:hover {
+color: #e57373;
+}
+.subject-progress {
+margin-bottom: 14px;
+}
+.progress-header {
+display: flex;
+justify-content: space-between;
+font-size: 0.88rem;
+margin-bottom: 5px;
+font-weight: 600;
+}
+.progress-bar-bg {
+width: 100%;
+height: 10px;
+background-color: #f0e6eb;
+border-radius: 6px;
+overflow: hidden;
+}
+.progress-bar-fill {
+height: 100%;
+background: linear-gradient(90deg, var(--secondary), var(--primary));
+border-radius: 6px;
+}
+table {
+width: 100%;
+border-collapse: collapse;
+font-size: 0.9rem;
+}
+th, td {
+padding: 10px 12px;
+text-align: left;
+border-bottom: 1px solid #f2e6ec;
+} th {
+background-color: #f9eff4;
+color: #9e4c70;
+font-weight: 600;
+}
+.time-slot {
+font-weight: 600;
+color: var(--secondary-dark);
+white-space: nowrap;
+}
+.doc-link {
+color: var(--secondary-dark);
+text-decoration: none;
+font-weight: 600;
+}
+.doc-link:hover {
+text-decoration: underline;
+color: var(--primary-dark);
+}
+footer {
+text-align: center;
+font-size: 0.85rem;
+color: var(--text-muted);
+margin-top: 10px;
+}
+</style>
+</head>
+<body>
+<div class="container">
+<header>
+<div class="header-info">
+<h1>🌸 Kế Hoạch Học Tập & Ghi Chép Tài Liệu</h1>
+<p>Học sinh: <strong>Phan Xuân Đào</strong> | Lớp: <strong>12A7</strong> (Trường
+THPT Lê Duẩn)</p>
+</div>
+<div class="goal-badge">
+<span>Mục tiêu trọng tâm</span>
+<strong>Tốt nghiệp THPT 2027 & Nền tảng Khối B00</strong> </div>
+</header>
+<div class="grid">
+<div class="card">
+<h2>📝 Danh Sách Nhiệm Vụ Học Tập</h2>
+<div class="add-form">
+<select id="subjectSelect">
+<option value="Toán">Toán</option>
+<option value="Ngữ Văn">Ngữ Văn</option>
+<option value="Địa Lý">Địa Lý</option>
+<option value="KTPL">KTPL</option>
+<option value="Hóa - Sinh">Tự học Hóa/Sinh</option>
+<option value="Ngoại Ngữ">Ngoại Ngữ</option>
+</select>
+<input type="text" id="taskInput" placeholder="Nhập bài tập, chuyên đề cần ôn...">
+<button class="btn" onclick="addTask()">Thêm</button>
+</div>
+<ul class="task-list" id="taskList"></ul>
+</div>
+<div class="card">
+<h2>📊 Tiến Độ Ôn Tập Theo Môn</h2>
+<div class="subject-progress">
+<div class="progress-header"><span>Toán học (Giải tích & Hình
+học)</span><span>75%</span></div>
+<div class="progress-bar-bg"><div class="progress-bar-fill" style="width:
+75%;"></div></div>
+</div>
+<div class="subject-progress">
+<div class="progress-header"><span>Ngữ Văn (Đọc hiểu & Nghị
+luận)</span><span>80%</span></div>
+<div class="progress-bar-bg"><div class="progress-bar-fill" style="width:
+80%;"></div></div>
+</div>
+<div class="subject-progress">
+<div class="progress-header"><span>Địa Lý & KTPL (Tổ hợp
+TN)</span><span>72%</span></div>
+<div class="progress-bar-bg"><div class="progress-bar-fill" style="width:
+72%;"></div></div>
+</div>
+<div class="subject-progress">
+<div class="progress-header"><span>Tự học nền tảng Hóa - Sinh (B00)</span><span>58%</span></div>
+<div class="progress-bar-bg"><div class="progress-bar-fill" style="width:
+58%;"></div></div>
+</div>
+<div class="subject-progress">
+<div class="progress-header"><span>Ngoại ngữ & Kỹ năng
+mềm</span><span>62%</span></div>
+<div class="progress-bar-bg"><div class="progress-bar-fill" style="width:
+62%;"></div></div>
+</div>
+</div>
+</div>
+<div class="card">
+<h2>📚 Kho Ghi Chép Tài Liệu Học Tập</h2>
+<div class="add-form">
+<select id="docSubjectSelect">
+<option value="Toán">Toán</option>
+<option value="Ngữ Văn">Ngữ Văn</option>
+<option value="Địa Lý">Địa Lý</option>
+<option value="KTPL">KTPL</option>
+<option value="Hóa - Sinh">Hóa - Sinh</option>
+<option value="Tin Học">Tin Học</option>
+</select>
+<input type="text" id="docTitleInput" placeholder="Tên tài liệu / Chuyên đề ghi chép...">
+<input type="text" id="docNoteInput" placeholder="Ghi chú ngắn hoặc link Drive...">
+<button class="btn" onclick="addDoc()">Lưu tài liệu</button>
+</div>
+<table>
+<thead>
+<tr>
+<th>Môn Học</th>
+<th>Tên Tài Liệu / Chuyên Đề</th>
+<th>Ghi Chú / Nguồn Lưu Trữ</th>
+<th style="width: 50px;">Xóa</th>
+</tr>
+</thead>
+<tbody id="docTableBody"></tbody>
+</table>
+</div>
+<div class="card">
+<h2>⏰ Khung Giờ Tự Học Buổi Tối</h2> <table>
+<thead>
+<tr>
+<th>Khung Giờ</th>
+<th>Nội Dung Học Tập</th>
+<th>Phương Pháp & Công Cụ</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="time-slot">19:30 - 21:00</td>
+<td>Ôn tập bài trên lớp & Luyện đề Toán / Ngữ Văn</td>
+<td>SGK Kết nối tri thức, máy tính Casio fx-580VN X</td>
+</tr>
+<tr>
+<td class="time-slot">21:15 - 22:30</td>
+<td>Hệ thống lý thuyết Địa Lý & Giáo dục KTPL</td>
+<td>Sơ đồ tư duy, luyện bộ đề trắc nghiệm chuẩn</td>
+</tr>
+<tr>
+<td class="time-slot">22:30 - 23:30</td>
+<td>Tự học nền tảng Hóa - Sinh (Khối B00) & Từ vựng</td>
+<td>Bài giảng video YouTube, sổ tay tóm tắt công thức</td>
+</tr>
+</tbody>
+</table>
+</div>
+<footer>
+Dữ liệu nhiệm vụ và tài liệu được lưu tự động trên trình duyệt ✨ Cố lên Xuân Đào ơi!
+</footer>
+</div>
+<script>
+const defaultTasks = [
+{ id: 1, subject: 'Toán', text: 'Luyện 20 câu trắc nghiệm Ứng dụng đạo hàm khảo sát hàm
+số', done: true },
+{ id: 2, subject: 'Ngữ Văn', text: 'Lập dàn ý bài nghị luận văn học trọng tâm học kỳ I', done:
+false },
+{ id: 3, subject: 'Địa Lý', text: 'Hệ thống kiến thức Địa lý tự nhiên & Dân cư Việt Nam', done:
+false },
+{ id: 4, subject: 'Hóa - Sinh', text: 'Xem video bài giảng cơ bản về Cơ chế di truyền và biến
+dị', done: false } ];
+const defaultDocs = [
+{ id: 101, subject: 'Toán', title: 'Sổ tay công thức Giải tích & Hình học 12', note: 'File PDF
+SGK Kết nối tri thức + mẹo bấm máy Casio' },
+{ id: 102, subject: 'Ngữ Văn', title: 'Tuyển tập dẫn chứng & Trích dẫn văn học Việt Nam',
+note: 'Ghi chép trên Samsung Notes' },
+{ id: 103, subject: 'Hóa - Sinh', title: 'Tài liệu tự học nền tảng Hóa vô cơ & Sinh học tế bào',
+note: 'Tổng hợp bài giảng YouTube & sơ đồ tóm tắt' }
+];
+let tasks = JSON.parse(localStorage.getItem('xuanDaoTasks_v3')) || defaultTasks;
+let docs = JSON.parse(localStorage.getItem('xuanDaoDocs_v3')) || defaultDocs;
+function saveData() {
+localStorage.setItem('xuanDaoTasks_v3', JSON.stringify(tasks));
+localStorage.setItem('xuanDaoDocs_v3', JSON.stringify(docs));
+}
+function renderTasks() {
+const list = document.getElementById('taskList');
+list.innerHTML = '';
+tasks.forEach(task => {
+const li = document.createElement('li');
+li.className = 'task-item';
+li.innerHTML = `
+<div class="task-left">
+<input type="checkbox" ${task.done ? 'checked' : ''}
+onchange="toggleTask(${task.id})">
+<span class="subject-tag">${task.subject}</span>
+<span class="task-text ${task.done ? 'done' : ''}">${task.text}</span>
+</div>
+<button class="delete-btn" onclick="deleteTask(${task.id})" title="Xóa">×</button>
+`;
+list.appendChild(li);
+});
+}
+function addTask() {
+const input = document.getElementById('taskInput');
+const subject = document.getElementById('subjectSelect').value;
+const text = input.value.trim();
+if (!text) return; tasks.unshift({ id: Date.now(), subject, text, done: false });
+input.value = '';
+saveData();
+renderTasks();
+}
+function toggleTask(id) {
+tasks = tasks.map(t => t.id === id ? { ...t, done: !t.done } : t);
+saveData();
+renderTasks();
+}
+function deleteTask(id) {
+tasks = tasks.filter(t => t.id !== id);
+saveData();
+renderTasks();
+}
+function renderDocs() {
+const tbody = document.getElementById('docTableBody');
+tbody.innerHTML = '';
+docs.forEach(doc => {
+const tr = document.createElement('tr');
+const noteDisplay = doc.note.startsWith('http')
+? `<a class="doc-link" href="${doc.note}" target="_blank">Mở liên kết tài liệu ↗</a>`
+: doc.note;
+tr.innerHTML = `
+<td><span class="subject-tag">${doc.subject}</span></td>
+<td><strong>${doc.title}</strong></td>
+<td>${noteDisplay}</td>
+<td><button class="delete-btn" onclick="deleteDoc(${doc.id})"
+title="Xóa">×</button></td>
+`;
+tbody.appendChild(tr);
+});
+}
+function addDoc() {
+const subject = document.getElementById('docSubjectSelect').value;
+const titleInput = document.getElementById('docTitleInput');
+const noteInput = document.getElementById('docNoteInput');
+const title = titleInput.value.trim(); const note = noteInput.value.trim() || 'Đã lưu ghi chép';
+if (!title) return;
+docs.unshift({ id: Date.now(), subject, title, note });
+titleInput.value = '';
+noteInput.value = '';
+saveData();
+renderDocs();
+}
+function deleteDoc(id) {
+docs = docs.filter(d => d.id !== id);
+saveData();
+renderDocs();
+}
+document.getElementById('taskInput').addEventListener('keypress', e => {
+if (e.key === 'Enter') addTask();
+});
+renderTasks();
+renderDocs();
+</script>
+</body>
+      </html>
