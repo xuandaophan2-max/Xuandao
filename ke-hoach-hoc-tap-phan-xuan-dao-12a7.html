@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="theme-color" content="#123b66" />
+  <title>Kế hoạch học tập | Phan Xuân Đào - 12A7</title>
+  <style>
+    :root{--navy:#123b66;--blue:#2563eb;--sky:#eaf3ff;--ink:#172b4d;--muted:#64748b;--line:#dce6f2;--white:#fff;--green:#13845b;--gold:#e5a323}
+    *{box-sizing:border-box} body{margin:0;background:#f3f7fc;color:var(--ink);font:15px/1.55 Inter,ui-sans-serif,system-ui,-apple-system,"Segoe UI",sans-serif}
+    .hero{background:linear-gradient(120deg,#102f52,#1e5a91 65%,#4389c8);color:white;padding:42px 20px 58px}
+    .wrap{max-width:1050px;margin:auto}.eyebrow{text-transform:uppercase;letter-spacing:.16em;font-size:11px;font-weight:800;color:#c9e2ff}
+    h1{font-size:clamp(28px,5vw,44px);line-height:1.12;margin:10px 0 8px}.hero p{margin:0;color:#e0edfb}
+    .student{display:flex;gap:10px;flex-wrap:wrap;margin-top:22px}.pill{border:1px solid #ffffff50;background:#ffffff16;padding:7px 13px;border-radius:999px;font-size:13px}
+    main{padding:0 18px 48px;margin-top:-28px}.panel{background:white;border:1px solid var(--line);border-radius:18px;padding:22px;box-shadow:0 10px 30px #183c6410;margin-bottom:18px}
+    .grid{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}.stat{background:var(--sky);border-radius:14px;padding:16px}.stat strong{display:block;font-size:25px;color:var(--navy)}.stat span{font-size:12px;color:var(--muted)}
+    h2{font-size:19px;margin:0 0 14px;color:var(--navy)}h3{font-size:15px;margin:0 0 8px}.muted{color:var(--muted)}
+    .two{display:grid;grid-template-columns:1fr 1fr;gap:18px}.subject{display:flex;justify-content:space-between;gap:12px;padding:11px 0;border-bottom:1px solid #edf1f6}.subject:last-child{border:0}.tag{font-size:11px;padding:3px 9px;border-radius:99px;background:#eaf3ff;color:#245b99;white-space:nowrap}
+    .task{display:flex;gap:10px;align-items:flex-start;padding:9px 0;border-bottom:1px solid #edf1f6}.task:last-child{border:0}.task input{width:17px;height:17px;margin-top:3px;accent-color:var(--blue)}.task label{flex:1}.task input:checked+label{text-decoration:line-through;color:#8492a6}
+    table{width:100%;border-collapse:collapse;font-size:13px}th,td{text-align:left;padding:11px 9px;border-bottom:1px solid #e8eef5;vertical-align:top}th{background:#f4f8fd;color:#24496f}td:first-child{font-weight:700;color:var(--navy);white-space:nowrap}
+    .note{background:#fff8e8;border-left:4px solid var(--gold);padding:13px 15px;border-radius:9px;color:#70521c;font-size:13px}
+    .progress{height:9px;background:#e8eef5;border-radius:20px;overflow:hidden;margin-top:12px}.bar{height:100%;width:0;background:linear-gradient(90deg,#2563eb,#38a1d8);transition:width .2s}
+    .actions{display:flex;gap:10px;flex-wrap:wrap;margin-top:15px}button{border:0;border-radius:10px;padding:10px 15px;font-weight:700;cursor:pointer;background:var(--blue);color:white}button.secondary{background:#eaf1fa;color:#24496f}button:hover{filter:brightness(.96)}
+    footer{text-align:center;color:#8190a4;font-size:12px;padding:8px 20px 28px}
+    @media(max-width:700px){.grid{grid-template-columns:1fr}.two{grid-template-columns:1fr}.panel{padding:17px}table{font-size:12px}th,td{padding:9px 6px}}
+    @media print{body{background:white}.hero{padding:25px}.panel{box-shadow:none;break-inside:avoid}main{margin-top:0}.actions{display:none}}
+  </style>
+</head>
+<body>
+  <header class="hero"><div class="wrap">
+    <div class="eyebrow">Study planner · Năm học 2026–2027</div>
+    <h1>Kế hoạch học tập</h1>
+    <p>Lập kế hoạch rõ ràng – học tập chủ động – tiến bộ mỗi ngày.</p>
+    <div class="student"><span class="pill">Học sinh: <b>Phan Xuân Đào</b></span><span class="pill">Lớp: <b>12A7</b></span><span class="pill">Mục tiêu: Hoàn thành tốt năm học lớp 12</span></div>
+  </div></header>
+  <main class="wrap">
+    <section class="panel">
+      <h2>Tổng quan kế hoạch</h2>
+      <div class="grid">
+        <div class="stat"><strong>12A7</strong><span>Lớp hiện tại</span></div>
+        <div class="stat"><strong>5–6 ngày</strong><span>Duy trì học tập mỗi tuần</span></div>
+        <div class="stat"><strong>30–45 phút</strong><span>Mỗi phiên tập trung</span></div>
+      </div>
+      <p class="muted" style="margin:16px 0 0;font-size:13px">Tiến độ nhiệm vụ đã hoàn thành: <b id="count">0/8</b></p>
+      <div class="progress"><div class="bar" id="bar"></div></div>
+    </section>
+
+    <div class="two">
+      <section class="panel"><h2>Mục tiêu học tập</h2>
+        <div class="subject"><span>Nắm chắc kiến thức trọng tâm lớp 12</span><span class="tag">Mỗi ngày</span></div>
+        <div class="subject"><span>Hoàn thành bài tập và bài được giao</span><span class="tag">Đúng hạn</span></div>
+        <div class="subject"><span>Ôn tập thường xuyên, tránh học dồn</span><span class="tag">Hằng tuần</span></div>
+        <div class="subject"><span>Rèn kỹ năng tự học và quản lý thời gian</span><span class="tag">Lâu dài</span></div>
+        <div class="subject"><span>Chuẩn bị tốt cho các kỳ kiểm tra và thi tốt nghiệp</span><span class="tag">Mục tiêu năm</span></div>
+      </section>
+      <section class="panel"><h2>Phương pháp học hiệu quả</h2>
+        <div class="subject"><span><b>01.</b> Học theo thời khóa biểu, ưu tiên môn cần củng cố.</span></div>
+        <div class="subject"><span><b>02.</b> Chia bài thành phần nhỏ, học tập trung 30–45 phút.</span></div>
+        <div class="subject"><span><b>03.</b> Ghi chú ý chính, tự làm bài trước khi xem lời giải.</span></div>
+        <div class="subject"><span><b>04.</b> Cuối tuần tổng kết phần đã học và phần còn yếu.</span></div>
+        <div class="subject"><span><b>05.</b> Nghỉ ngơi hợp lý, ngủ đủ và giữ sức khỏe.</span></div>
+      </section>
+    </div>
+
+    <section class="panel"><h2>Lịch học tập tham khảo trong tuần</h2>
+      <div style="overflow-x:auto"><table>
+        <thead><tr><th>Ngày</th><th>Nội dung chính</th><th>Việc cần hoàn thành</th></tr></thead>
+        <tbody>
+          <tr><td>Thứ 2</td><td>Ôn bài trên lớp</td><td>Xem lại ghi chép, hoàn thành bài tập được giao.</td></tr>
+          <tr><td>Thứ 3</td><td>Củng cố kiến thức</td><td>Luyện bài tập các môn cần rèn thêm.</td></tr>
+          <tr><td>Thứ 4</td><td>Học và tự kiểm tra</td><td>Ôn nội dung trọng tâm, tự trả lời câu hỏi.</td></tr>
+          <tr><td>Thứ 5</td><td>Luyện tập</td><td>Làm bài vận dụng, ghi lại lỗi thường gặp.</td></tr>
+          <tr><td>Thứ 6</td><td>Tổng hợp kiến thức</td><td>Hệ thống hóa nội dung đã học trong tuần.</td></tr>
+          <tr><td>Thứ 7</td><td>Ôn tập chuyên đề</td><td>Làm đề hoặc bài luyện tập phù hợp.</td></tr>
+          <tr><td>Chủ nhật</td><td>Nghỉ ngơi và chuẩn bị</td><td>Xem lại phần chưa vững, chuẩn bị tuần mới.</td></tr>
+        </tbody>
+      </table></div>
+      <p class="muted" style="font-size:12px;margin-bottom:0">Lịch có thể điều chỉnh theo thời khóa biểu chính thức và lịch kiểm tra của nhà trường.</p>
+    </section>
+
+    <section class="panel"><h2>Checklist học tập hằng tuần</h2>
+      <p class="muted" style="font-size:13px;margin-top:-7px">Đánh dấu khi hoàn thành. Tiến độ sẽ được lưu trên trình duyệt của thiết bị này.</p>
+      <div id="tasks">
+        <div class="task"><input type="checkbox" id="t1"><label for="t1">Xem lại bài học sau mỗi buổi đến lớp.</label></div>
+        <div class="task"><input type="checkbox" id="t2"><label for="t2">Hoàn thành đầy đủ bài tập được giao.</label></div>
+        <div class="task"><input type="checkbox" id="t3"><label for="t3">Ôn tập ít nhất một nội dung trọng tâm mỗi ngày.</label></div>
+        <div class="task"><input type="checkbox" id="t4"><label for="t4">Luyện tập thêm những dạng bài còn chưa vững.</label></div>
+        <div class="task"><input type="checkbox" id="t5"><label for="t5">Ghi lại câu hỏi hoặc kiến thức chưa hiểu để hỏi thầy cô.</label></div>
+        <div class="task"><input type="checkbox" id="t6"><label for="t6">Sắp xếp sách vở và tài liệu học tập gọn gàng.</label></div>
+        <div class="task"><input type="checkbox" id="t7"><label for="t7">Tự đánh giá kết quả học tập vào cuối tuần.</label></div>
+        <div class="task"><input type="checkbox" id="t8"><label for="t8">Lập mục tiêu và lịch học cho tuần tiếp theo.</label></div>
+      </div>
+      <div class="actions"><button onclick="window.print()">In kế hoạch / Lưu PDF</button><button class="secondary" onclick="resetTasks()">Đặt lại checklist</button></div>
+    </section>
+
+    <section class="panel"><h2>Cam kết của bản thân</h2>
+      <p style="margin:0 0 12px">Em, <b>Phan Xuân Đào – lớp 12A7</b>, sẽ chủ động xây dựng thói quen học tập nghiêm túc, thực hiện kế hoạch phù hợp với khả năng, không ngừng cố gắng và chịu trách nhiệm với mục tiêu của mình. Em sẽ kiên trì từng ngày để đạt được kết quả tốt trong năm học lớp 12.</p>
+      <div class="note">Ghi nhớ: Không cần học thật nhiều trong một ngày; điều quan trọng là học đều đặn, hiểu bài và tiến bộ từng bước.</div>
+    </section>
+  </main>
+  <footer>PHAN XUÂN ĐÀO · 12A7 · KẾ HOẠCH HỌC TẬP</footer>
+  <script>
+    const checks=[...document.querySelectorAll('#tasks input[type=checkbox]')];
+    function update(){const done=checks.filter(x=>x.checked).length;document.getElementById('count').textContent=`${done}/${checks.length}`;document.getElementById('bar').style.width=(done/checks.length*100)+'%';}
+    checks.forEach(c=>{c.checked=localStorage.getItem('planner_'+c.id)==='1';c.addEventListener('change',()=>{localStorage.setItem('planner_'+c.id,c.checked?'1':'0');update();});});
+    function resetTasks(){if(confirm('Bạn muốn đặt lại toàn bộ checklist?')){checks.forEach(c=>{c.checked=false;localStorage.removeItem('planner_'+c.id);});update();}}
+    update();
+  </script>
+</body>
+</html>
